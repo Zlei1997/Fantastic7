@@ -15,7 +15,7 @@ namespace Fantastic7
         private Room[] _rooms;
         private Room _currRoom;
         private int size = 6;
-        private Entity _player;
+        public Entity player; 
         private int[] dir = { 0, 1, 2, 3 };
         private const int doorChance = 10;
         private const int popChance = 20;
@@ -35,7 +35,7 @@ namespace Fantastic7
         {
 
             r = new Random();
-            _player = new Entity(new NSprite(new Rectangle(500, 500, 50, 50), Color.Wheat));
+            player = new Entity(new NSprite(new Rectangle(500, 500, 50, 50), Color.Wheat));
 
             int count;
             int x, y;
@@ -62,7 +62,7 @@ namespace Fantastic7
                 }
             } while (count < roomRejectionSize || count > roomUpperBound);
 
-            _currRoom.addObject(_player);//Puts player in first room
+            _currRoom.addObject(player);//Puts player in first room
 
             //
             //Used for constructing minimap, can be ignorned 

@@ -48,12 +48,15 @@ namespace Fantastic7
         protected int _curHealth;
         protected int _intDamage;
         protected bool damage;
+        protected int _movementSpeed;
         protected bool dead = false; //Used to mark it as ready for garbage collection
+
+        public int movementSpeed { get { return _movementSpeed; } }
 
         //By default, the entities are set as invulnerable if the max health is not changed
         //Interaction damage is used when entities interact, as long as they both use damage, interaction damage is
         //subtracted from the other entity
-        public Entity(GSprite sprite, int maxHealth = -1, int interactionDamage = 0) : base(sprite)
+        public Entity(GSprite sprite, int maxHealth = -1, int interactionDamage = 0, int speed = 250) : base(sprite)
         {
             if (maxHealth < 0) damage = false;
             else damage = true;
@@ -61,6 +64,7 @@ namespace Fantastic7
             _maxHealth = maxHealth;
             _curHealth = maxHealth;
             _intDamage = interactionDamage;
+            _movementSpeed = speed;
         }
 
         //Used to deal damage and gain back health. Unbounded so negative numbers can be passed it

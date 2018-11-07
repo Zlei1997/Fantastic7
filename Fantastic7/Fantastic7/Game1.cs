@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections;
+using System.Timers;
 
 namespace Fantastic7
 {
@@ -31,7 +32,10 @@ namespace Fantastic7
         SpriteFont sfont;
         GGUI mainMenu;
         GGUI pauseMenu;
-
+        int currentTime;
+        int goalTime;
+        MenuControls MenuControls;
+        PlayControls PlayControls;
 
         enum GameState
         {
@@ -74,7 +78,16 @@ namespace Fantastic7
             Texture2D plainText = new Texture2D(GraphicsDevice, 1, 1);
             plainText.SetData(new[] { Color.White });
             spriteBatch.setDefaultTexture(plainText);
-            
+            //currentTime = 0;
+            //goalTime = 35;
+            Keys[] MenuControlList = { Keys.Escape, Keys.Enter, Keys.W, Keys.S, Keys.Up, Keys.Down };
+            MenuControls = new MenuControls(MenuControlList);
+
+            Keys[] playControlList = { Keys.Escape, Keys.W, Keys.A, Keys.S, Keys.D, Keys.Left, Keys.Right, Keys.Up, Keys.Down, Keys.Space };
+            PlayControls = new PlayControls(playControlList);
+
+         
+
 
 
             //Creates Test Room
@@ -145,31 +158,70 @@ namespace Fantastic7
         protected override void Update(GameTime gameTime)
         {
 
-            switch(gs)
+            
+
+            switch (gs)
             {
                 case GameState.mainMenu:
-                    //Poll inputs
-                    if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                        Exit();
-                    if (Keyboard.GetState().IsKeyDown(Keys.G)) newGame();
-                    if (Keyboard.GetState().IsKeyDown(Keys.Down)) mainMenu.nextOption();
-                    if (Keyboard.GetState().IsKeyDown(Keys.Up)) mainMenu.previousOption();
-                    //End inputs 
 
+
+                    MenuControls.update(gameTime);
+
+                    //Poll inputs
+
+
+
+
+                    //currentTime += gameTime.ElapsedGameTime.Milliseconds;
+                    //if(currentTime >= goalTime) { 
+
+                    if (MenuControls.getExit()) Exit();
+                    if (MenuControls.getSelect()) newGame();
+                    if (MenuControls.getNextKey()) mainMenu.nextOption();
+                    if (MenuControls.getPrevKey()) mainMenu.previousOption();
+                        
+                        //End inputs 
+                        //currentTime -= goalTime;
+                    //}
                     break;
                 case GameState.running:
+
+                    PlayControls.update(gameTime);
+
                     //Poll inputs
-                    if (Keyboard.GetState().IsKeyDown(Keys.Escape)) gs = GameState.paused;
+
+
+
+                    if (PlayControls.getPause()) gs = GameState.paused;
+
+                    Vector2 playerMovement = new Vector2(0, 0);
+                    if (PlayControls.getMoveDown()) playerMovement.Y += currMap.player.movementSpeed; 
+                    if (PlayControls.getMoveUp()) playerMovement.Y -= currMap.player.movementSpeed;
+                    if (PlayControls.getMoveRight()) playerMovement.X += currMap.player.movementSpeed;
+                    if (PlayControls.getMoveLeft()) playerMovement.X -= currMap.player.movementSpeed;
+                    if (playerMovement.X != 0 || playerMovement.Y != 0)
+                    {
+                        
+                        currMap.player.move(playerMovement * (float)gameTime.ElapsedGameTime.TotalSeconds);
+                    }
+                    
+                    
                     //End inputs
 
                     currMap.update(gameTime);
                     
                     break;
                 case GameState.paused:
+
+
+                    MenuControls.update(gameTime);
+
                     //Poll inputs
-                    if (Keyboard.GetState().IsKeyDown(Keys.Enter)) gs = GameState.mainMenu;
-                    if (Keyboard.GetState().IsKeyDown(Keys.U)) gs = GameState.running;
-                    if (Keyboard.GetState().IsKeyDown(Keys.F)) graphics.IsFullScreen = false; 
+
+                    if (MenuControls.getNextKey()) pauseMenu.nextOption();
+                    if (MenuControls.getPrevKey()) pauseMenu.previousOption();
+                    if (MenuControls.getSelect()) gs = GameState.mainMenu;
+                    if (MenuControls.getExit()) gs = GameState.running;
                     //End inputs
                     break;
                 default: break;
