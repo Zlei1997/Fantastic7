@@ -42,10 +42,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Game1.cs" />
+    <Compile Include="GameControls.cs" />
     <Compile Include="GGUI.cs" />
     <Compile Include="GObject.cs" />
     <Compile Include="GSprite.cs" />
+    <Compile Include="GTimer.cs" />
+    <Compile Include="MenuControls.cs" />
     <Compile Include="Map.cs" />
+    <Compile Include="PlayControls.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Room.cs" />

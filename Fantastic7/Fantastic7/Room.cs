@@ -60,7 +60,7 @@ namespace Fantastic7
         {
             foreach(GObject go in _go)
             {
-                go.move(new Vector2(0, -50) * (float)gt.ElapsedGameTime.TotalSeconds);
+                //go.move(new Vector2(0, -50) * (float)gt.ElapsedGameTime.TotalSeconds);
             }
         }
 
