@@ -13,11 +13,19 @@ namespace Fantastic7
     {
         protected Vector2 _pos;
         protected GSprite _sprite;
+        public CollisionNature _collisionNature;
+        public CollisionHandler.Direction direction = CollisionHandler.Direction.North;
+        public enum CollisionNature {
+            Stable,
+            Free,
+            KnockBack
+        };
 
-        public GObject(GSprite sprite)
+        public GObject(GSprite sprite,CollisionNature collisionNature=CollisionNature.Stable)
         {
             _pos = sprite.getPosition();
             _sprite = sprite;
+            _collisionNature = collisionNature;
         }
 
         //Changes object position to new point.
@@ -40,6 +48,43 @@ namespace Fantastic7
         {
             _sprite.draw(sb, scale);
         }
+        public GSprite getSprite()
+        {
+            return _sprite;
+        }
+        public Vector2 getPosition()
+        {
+            return _pos;
+        }
+        public void moveForward(float distance)
+        {
+            switch (direction)
+            {
+                case CollisionHandler.Direction.North:
+                    move(new Vector2(0, -distance));
+                    break;
+                case CollisionHandler.Direction.South:
+                    move(new Vector2(0, distance));
+                    break;
+                case CollisionHandler.Direction.West:
+                    move(new Vector2(-distance, 0));
+                    break;
+                case CollisionHandler.Direction.East:
+                    move(new Vector2(distance, 0));
+                    break;
+            }
+        }
+        public Rectangle? CollisionRect()
+        {
+            if (_sprite is NSprite)
+            {
+                NSprite n = (NSprite)_sprite;
+                int width = n.getRect().Width;
+                int height = n.getRect().Height;
+                return new Rectangle((int)_pos.X, (int)_pos.Y, width, height);
+            }
+            return null;
+        }
     }
 
     class Entity : GObject
@@ -50,21 +95,25 @@ namespace Fantastic7
         protected bool damage;
         protected int _movementSpeed;
         protected bool dead = false; //Used to mark it as ready for garbage collection
+        
+        public Weapon _mainweapon;
 
         public int movementSpeed { get { return _movementSpeed; } }
 
         //By default, the entities are set as invulnerable if the max health is not changed
         //Interaction damage is used when entities interact, as long as they both use damage, interaction damage is
         //subtracted from the other entity
-        public Entity(GSprite sprite, int maxHealth = -1, int interactionDamage = 0, int speed = 250) : base(sprite)
+        public Entity(GSprite sprite, int maxHealth = -1, int interactionDamage = 0, int speed = 400, CollisionNature collisionNature = CollisionNature.KnockBack,Weapon mainweapon=null
+            ) : base(sprite,collisionNature)
         {
             if (maxHealth < 0) damage = false;
             else damage = true;
-
             _maxHealth = maxHealth;
             _curHealth = maxHealth;
             _intDamage = interactionDamage;
             _movementSpeed = speed;
+            direction = (CollisionHandler.Direction)EventHandler.rand.Next(0, 4);
+            _mainweapon = mainweapon;
         }
 
         //Used to deal damage and gain back health. Unbounded so negative numbers can be passed it

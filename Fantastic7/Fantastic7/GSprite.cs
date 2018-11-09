@@ -61,5 +61,9 @@ namespace Fantastic7
             _r.X = (int)v.X;
             _r.Y = (int)v.Y;
         }
+        public Rectangle getRect()
+        {
+            return _r;
+        }
     }
 }

@@ -157,3 +157,28 @@ C:\Users\Caleb\Desktop\Fantastic7-master\Fantastic7\Fantastic7\obj\x86\Debug\Fan
 C:\Users\Caleb\Desktop\Fantastic7-master\Fantastic7\Fantastic7\obj\x86\Debug\Fantastic7.csproj.CopyComplete
 C:\Users\Caleb\Desktop\Fantastic7-master\Fantastic7\Fantastic7\obj\x86\Debug\Fantastic7.exe
 C:\Users\Caleb\Desktop\Fantastic7-master\Fantastic7\Fantastic7\obj\x86\Debug\Fantastic7.pdb
+D:\Renzhi Li\OneDrive - Cooperative Office System\works\workspace\2018-Fall\Fantastic7\Fantastic7\Fantastic7\bin\Windows\x86\Debug\Content\main.xnb
+D:\Renzhi Li\OneDrive - Cooperative Office System\works\workspace\2018-Fall\Fantastic7\Fantastic7\Fantastic7\bin\Windows\x86\Debug\Content\second.xnb
+D:\Renzhi Li\OneDrive - Cooperative Office System\works\workspace\2018-Fall\Fantastic7\Fantastic7\Fantastic7\bin\Windows\x86\Debug\Fantastic7.exe
+D:\Renzhi Li\OneDrive - Cooperative Office System\works\workspace\2018-Fall\Fantastic7\Fantastic7\Fantastic7\bin\Windows\x86\Debug\Fantastic7.pdb
+D:\Renzhi Li\OneDrive - Cooperative Office System\works\workspace\2018-Fall\Fantastic7\Fantastic7\Fantastic7\bin\Windows\x86\Debug\MonoGame.Framework.dll
+D:\Renzhi Li\OneDrive - Cooperative Office System\works\workspace\2018-Fall\Fantastic7\Fantastic7\Fantastic7\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+D:\Renzhi Li\OneDrive - Cooperative Office System\works\workspace\2018-Fall\Fantastic7\Fantastic7\Fantastic7\bin\Windows\x86\Debug\SharpDX.dll
+D:\Renzhi Li\OneDrive - Cooperative Office System\works\workspace\2018-Fall\Fantastic7\Fantastic7\Fantastic7\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+D:\Renzhi Li\OneDrive - Cooperative Office System\works\workspace\2018-Fall\Fantastic7\Fantastic7\Fantastic7\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+D:\Renzhi Li\OneDrive - Cooperative Office System\works\workspace\2018-Fall\Fantastic7\Fantastic7\Fantastic7\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+D:\Renzhi Li\OneDrive - Cooperative Office System\works\workspace\2018-Fall\Fantastic7\Fantastic7\Fantastic7\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+D:\Renzhi Li\OneDrive - Cooperative Office System\works\workspace\2018-Fall\Fantastic7\Fantastic7\Fantastic7\bin\Windows\x86\Debug\SharpDX.XInput.dll
+D:\Renzhi Li\OneDrive - Cooperative Office System\works\workspace\2018-Fall\Fantastic7\Fantastic7\Fantastic7\bin\Windows\x86\Debug\MonoGame.Framework.xml
+D:\Renzhi Li\OneDrive - Cooperative Office System\works\workspace\2018-Fall\Fantastic7\Fantastic7\Fantastic7\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+D:\Renzhi Li\OneDrive - Cooperative Office System\works\workspace\2018-Fall\Fantastic7\Fantastic7\Fantastic7\bin\Windows\x86\Debug\SharpDX.xml
+D:\Renzhi Li\OneDrive - Cooperative Office System\works\workspace\2018-Fall\Fantastic7\Fantastic7\Fantastic7\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+D:\Renzhi Li\OneDrive - Cooperative Office System\works\workspace\2018-Fall\Fantastic7\Fantastic7\Fantastic7\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+D:\Renzhi Li\OneDrive - Cooperative Office System\works\workspace\2018-Fall\Fantastic7\Fantastic7\Fantastic7\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+D:\Renzhi Li\OneDrive - Cooperative Office System\works\workspace\2018-Fall\Fantastic7\Fantastic7\Fantastic7\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+D:\Renzhi Li\OneDrive - Cooperative Office System\works\workspace\2018-Fall\Fantastic7\Fantastic7\Fantastic7\bin\Windows\x86\Debug\SharpDX.XInput.xml
+D:\Renzhi Li\OneDrive - Cooperative Office System\works\workspace\2018-Fall\Fantastic7\Fantastic7\Fantastic7\obj\x86\Debug\Fantastic7.csprojAssemblyReference.cache
+D:\Renzhi Li\OneDrive - Cooperative Office System\works\workspace\2018-Fall\Fantastic7\Fantastic7\Fantastic7\obj\x86\Debug\Fantastic7.csproj.CoreCompileInputs.cache
+D:\Renzhi Li\OneDrive - Cooperative Office System\works\workspace\2018-Fall\Fantastic7\Fantastic7\Fantastic7\obj\x86\Debug\Fantastic7.csproj.CopyComplete
+D:\Renzhi Li\OneDrive - Cooperative Office System\works\workspace\2018-Fall\Fantastic7\Fantastic7\Fantastic7\obj\x86\Debug\Fantastic7.exe
+D:\Renzhi Li\OneDrive - Cooperative Office System\works\workspace\2018-Fall\Fantastic7\Fantastic7\Fantastic7\obj\x86\Debug\Fantastic7.pdb

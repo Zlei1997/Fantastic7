@@ -36,6 +36,7 @@ namespace Fantastic7
         int goalTime;
         MenuControls MenuControls;
         PlayControls PlayControls;
+        EventHandler EventHandler;
 
         enum GameState
         {
@@ -147,6 +148,7 @@ namespace Fantastic7
             gs = GameState.running;
             currMap = new Map();
             currMap.GenerateMap();
+            EventHandler = new EventHandler(currMap);
         }
 
 
@@ -190,24 +192,43 @@ namespace Fantastic7
 
                     //Poll inputs
 
-
-
                     if (PlayControls.getPause()) gs = GameState.paused;
 
                     Vector2 playerMovement = new Vector2(0, 0);
-                    if (PlayControls.getMoveDown()) playerMovement.Y += currMap.player.movementSpeed; 
-                    if (PlayControls.getMoveUp()) playerMovement.Y -= currMap.player.movementSpeed;
-                    if (PlayControls.getMoveRight()) playerMovement.X += currMap.player.movementSpeed;
-                    if (PlayControls.getMoveLeft()) playerMovement.X -= currMap.player.movementSpeed;
-                    if (playerMovement.X != 0 || playerMovement.Y != 0)
+                    if (PlayControls.getMoveDown())
                     {
-                        
+                        playerMovement.Y += currMap.player.movementSpeed;
+                        currMap.player.direction = CollisionHandler.Direction.South;
+                    }
+                    if (PlayControls.getMoveUp())
+                    {
+                        playerMovement.Y -= currMap.player.movementSpeed;
+                        currMap.player.direction = CollisionHandler.Direction.North;
+                    }
+                    if (PlayControls.getMoveRight())
+                    {
+                        playerMovement.X += currMap.player.movementSpeed;
+                        currMap.player.direction = CollisionHandler.Direction.East;
+                    }
+                    if (PlayControls.getMoveLeft())
+                    {
+                        playerMovement.X -= currMap.player.movementSpeed;
+                        currMap.player.direction = CollisionHandler.Direction.West;
+                    }
+                    if (PlayControls.getShootKey())
+                    {
+                        currMap.player._mainweapon.IsUsing = true;
+                    }
+                    else currMap.player._mainweapon.IsUsing = false;
+                    if (playerMovement.X != 0 || playerMovement.Y != 0)
+                    {                      
                         currMap.player.move(playerMovement * (float)gameTime.ElapsedGameTime.TotalSeconds);
                     }
-                    
-                    
+
+
                     //End inputs
 
+                    EventHandler.handle(gameTime);
                     currMap.update(gameTime);
                     
                     break;
@@ -250,7 +271,6 @@ namespace Fantastic7
                     pauseMenu.draw(spriteBatch, 1);
                     break;
                 case GameState.running:
-
                     currMap.draw(spriteBatch, 1f);
                     break;
                 default: break;

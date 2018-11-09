@@ -38,7 +38,7 @@ namespace Fantastic7
         protected Keys[] keyList; //set of controls
         protected enum keyState {noPress, press, release, hold};
         protected Dictionary<Keys,keyState> keyBuffer; //Buffer of Previous states
-        private Keys[] defaultControls = { Keys.Escape, Keys.Enter, Keys.W, Keys.A, Keys.S, Keys.D, Keys.Left, Keys.Right, Keys.Up, Keys.Down};
+        private Keys[] defaultControls = { Keys.Escape, Keys.Enter, Keys.W, Keys.A, Keys.S, Keys.D, Keys.Left, Keys.Right, Keys.Up, Keys.Down,Keys.Space};
 
         protected Dictionary<Keys, GTimer> timerSet;
        
