@@ -63,9 +63,7 @@ namespace Fantastic7
 
         public Boolean getShootKey()
         {
-            return getGenericKey(Keys.Escape);
-
-
+            return getGenericKey(Keys.Space);
         }
 
    

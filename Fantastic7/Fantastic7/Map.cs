@@ -13,7 +13,7 @@ namespace Fantastic7
     {
         private bool muteConsole = true;
         private Room[] _rooms;
-        private Room _currRoom;
+        public Room _currRoom;
         private int size = 6;
         public Entity player; 
         private int[] dir = { 0, 1, 2, 3 };
@@ -35,8 +35,7 @@ namespace Fantastic7
         {
 
             r = new Random();
-            player = new Entity(new NSprite(new Rectangle(500, 500, 50, 50), Color.Wheat));
-
+            player = new Entity(new NSprite(new Rectangle(500, 500, 50, 50), Color.Wheat),100,10,400,GObject.CollisionNature.KnockBack,new Gun());
             int count;
             int x, y;
             do
@@ -249,6 +248,12 @@ namespace Fantastic7
         public void changeRoom(int i)
         {
             if (!(i >= size * size || i < 0)) _currRoom = _rooms[i];
+        }
+        public void changeRoomByInstance(Room room)
+        {
+            if (room != null){
+                _currRoom = room;
+            }  
         }
 
         public void draw(SpriteBatchPlus sb, float scale)
