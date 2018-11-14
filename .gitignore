@@ -4,6 +4,5 @@
 
 /Fantastic7/.vs/Fantastic7/v15
 /.vs
-x86/*
-*.cs
-*.cache
+bin/
+obj/
