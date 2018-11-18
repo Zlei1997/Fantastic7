@@ -30,6 +30,7 @@ namespace Fantastic7
         const int HEIGHT = 720;
         SpriteFont mfont;
         SpriteFont sfont;
+        SpriteFont guiFont;
         GGUI mainMenu;
         GGUI pauseMenu;
         int currentTime;
@@ -102,6 +103,7 @@ namespace Fantastic7
             //Imports Font
             mfont = Content.Load<SpriteFont>("main");
             sfont = Content.Load<SpriteFont>("second");
+            guiFont = Content.Load<SpriteFont>("guiFont");
             int mHeight = (int)mfont.MeasureString("M").Y;
             int sHeight = (int)sfont.MeasureString("M").Y;
 
@@ -146,7 +148,7 @@ namespace Fantastic7
         protected void newGame()
         {
             gs = GameState.running;
-            currMap = new Map();
+            currMap = new Map(guiFont);
             currMap.GenerateMap();
             EventHandler = new EventHandler(currMap);
         }
