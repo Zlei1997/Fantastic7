@@ -52,9 +52,12 @@ namespace Fantastic7
         private int xOffset = 10;
         private int yOffset = 10;
         private double elapsedTime = 0;
+        private Entity player;
+        private int hpBarLength = 100;
 
         public GHUD(Entity player, SpriteFont font)
         {
+            this.player = player;
             MaxHP = player._maxHealth;
             CurrentHP = player._curHealth;
             Score = 0;
@@ -62,7 +65,7 @@ namespace Fantastic7
             this.font = font;
             _fheight = (int)font.MeasureString("H").Y;
             _fwidth = (int)font.MeasureString("Health: ").X;
-            _hudBG = new NSprite(new Rectangle(0, 0, _fwidth + MaxHP + xOffset * 2, 120), new Color(Color.Black, 0.5f));
+            _hudBG = new NSprite(new Rectangle(0, 0, _fwidth + hpBarLength + xOffset * 2, 120), new Color(Color.Black, 0.5f));
             _healthBorder = new NSprite(new Rectangle((int)_hudBG.getPosition().X + 78, (int)_hudBG.getPosition().Y + 14, MaxHP + 4, 15), new Color(Color.Gray, 0.8f));
     }
 
@@ -74,8 +77,10 @@ namespace Fantastic7
             {
                 elapsedTime = 0;
                 Score++;
-                CurrentHP -= 2;
+                player.modifyHealth(-2);
             }
+            CurrentHP = player._curHealth;
+            MaxHP = player._maxHealth;
         }
 
         public void draw(SpriteBatchPlus sb, float scale)
@@ -85,7 +90,7 @@ namespace Fantastic7
             // Draws health bar
             _healthBorder.draw(sb, scale);
             sb.Draw(sb.defaultTexture(), 
-                new Rectangle((int)_hudBG.getPosition().X + 80, (int)_hudBG.getPosition().Y + 16, CurrentHP, 11), 
+                new Rectangle((int)_hudBG.getPosition().X + 80, (int)_hudBG.getPosition().Y + 16, (int)(CurrentHP * ((hpBarLength / MaxHP))), 11), 
                 Color.LawnGreen);
 
             sb.DrawString(font, "Health: ", 
