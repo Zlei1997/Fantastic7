@@ -70,7 +70,7 @@ namespace Fantastic7
     class TSprite : NSprite
     {
         protected Texture2D _t;
-        public TSprite(Texture2D t, Rectangle r, Color c) : base(r, c) { _t = t; }
+        public TSprite(Texture2D t, Rectangle r, Color c) : base(new Rectangle(r.X, r.Y, t.Width, t.Height), c) { _t = t; }
         override public void draw(SpriteBatchPlus sb, float scale) { sb.Draw(_t, _r, _c); }
     }
 }
