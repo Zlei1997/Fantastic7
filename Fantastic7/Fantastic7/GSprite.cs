@@ -66,4 +66,11 @@ namespace Fantastic7
             return _r;
         }
     }
+    
+    class TSprite : NSprite
+    {
+        protected Texture2D _t;
+        public TSprite(Texture2D t, Rectangle r, Color c) : base(r, c) { _t = t; }
+        override public void draw(SpriteBatchPlus sb, float scale) { sb.Draw(_t, _r, _c); }
+    }
 }
