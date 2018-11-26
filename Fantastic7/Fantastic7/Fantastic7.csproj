@@ -45,6 +45,7 @@
     <Compile Include="Game1.cs" />
     <Compile Include="GameControls.cs" />
     <Compile Include="GGUI.cs" />
+    <Compile Include="GHUD.cs" />
     <Compile Include="GObject.cs" />
     <Compile Include="GSprite.cs" />
     <Compile Include="GTimer.cs" />

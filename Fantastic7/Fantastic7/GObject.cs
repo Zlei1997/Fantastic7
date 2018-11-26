@@ -11,7 +11,7 @@ namespace Fantastic7
 {
     class GObject
     {
-        protected Vector2 _pos;
+        public Vector2 _pos;
         protected GSprite _sprite;
         public CollisionNature _collisionNature;
         public CollisionHandler.Direction direction = CollisionHandler.Direction.North;
@@ -89,8 +89,8 @@ namespace Fantastic7
 
     class Entity : GObject
     {
-        protected int _maxHealth;
-        protected int _curHealth;
+        public int _maxHealth { get; private set; }
+        public int _curHealth { get; private set; }
         protected int _intDamage;
         protected bool damage;
         protected int _movementSpeed;

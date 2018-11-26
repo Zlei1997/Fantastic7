@@ -25,17 +25,24 @@ namespace Fantastic7
         private Random r;
 
         private GGUI miniMap;
+        public GHUD hud;
 
         public Map()
         {
             _rooms = new Room[size * size];
         }
 
+        public Map(SpriteFont font)
+        {
+            _rooms = new Room[size * size];
+            player = new Entity(new NSprite(new Rectangle(500, 500, 50, 50), Color.Wheat), 100, 10, 400, GObject.CollisionNature.KnockBack, new Gun());
+            hud = new GHUD(player, font);
+        }
+
         public void GenerateMap()
         {
 
             r = new Random();
-            player = new Entity(new NSprite(new Rectangle(500, 500, 50, 50), Color.Wheat),100,10,400,GObject.CollisionNature.KnockBack,new Gun());
             int count;
             int x, y;
             do
@@ -243,6 +250,7 @@ namespace Fantastic7
         public void update(GameTime gt)
         {
             _currRoom.update(gt);
+            hud.update(gt);
         }
 
         public void changeRoom(int i)
@@ -259,6 +267,7 @@ namespace Fantastic7
         public void draw(SpriteBatchPlus sb, float scale)
         {
             _currRoom.draw(sb,scale);
+            hud.draw(sb, scale);
 
             //This draws the map over top off the room
             //Used for testing purposes when checking the map generation
