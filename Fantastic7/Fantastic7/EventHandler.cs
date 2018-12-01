@@ -209,7 +209,7 @@ namespace Fantastic7
                 }
             }
         }
-        private Direction CheckDirection(Rectangle? x,Rectangle? y)
+        public static Direction CheckDirection(Rectangle? x,Rectangle? y)
         {
             //Check x's relative direction compare to y
             //ex. return North indicates that x is at the North of y
@@ -322,28 +322,19 @@ namespace Fantastic7
         {
             //Random movement for Entities
             List<GObject> _go = _currRoom.getGObjects();
-            Entity en;
             foreach (GObject go in _go)
             {
-                if (go is Entity)
+                if (go is Ranger)
                 {
-                    en = (Entity)go;
-                    if (!en.Equals(_player))
-                    {
-                        if (EventHandler.rand.Next(0, 1000) < 20)
-                        {
-                            en.direction = (CollisionHandler.Direction)EventHandler.rand.Next(0, 4);
-                        }                     
-                        en.moveForward (en.movementSpeed * (float)gt.ElapsedGameTime.TotalSeconds);
-                        if (EventHandler.rand.Next(0, 1000) < 10)
-                        {
-                            en._mainweapon.IsUsing = true;
-                        }
-                        if (EventHandler.rand.Next(0, 1000) > 980)
-                        {
-                            en._mainweapon.IsUsing = false;
-                        }
-                    }                       
+                    Ranger r = (Ranger)go;
+                    r.player = _currmap.player;
+                    r.update(gt);
+                }
+                else if (go is Charger)
+                {
+                    Charger c = (Charger)go;
+                    c.player = _currmap.player;
+                    c.update(gt);
                 }
             }
         }
